@@ -1,12 +1,12 @@
-export function sumOfArray(arr) {
+function sumOfArray(arr) {
     if (!Array.isArray(arr)) {
-        throw TypeError("Must pass array to `sumOfArray`")
+        throw new TypeError("Must pass array to `sumOfArray`")
     }
 
     let i = 0;
     for (let item of arr) {
         if (typeof item !== 'number') {
-            throw TypeError("Array must only contain numbers")
+            throw new TypeError("Array must only contain numbers")
         }
 
         i += item;
@@ -15,17 +15,17 @@ export function sumOfArray(arr) {
     return i;
 }
 
-export function isPalindrome(str) {
+function isPalindrome(str) {
     if (typeof str !== "string") {
-        throw TypeError("Must pass string to `isPalindrome`")
+        throw new TypeError("Must pass string to `isPalindrome`")
     }
 
     return str.split("").reverse().join() === str;
 }
 
-export function capitalizeWords(str) {
+function capitalizeWords(str) {
     if (typeof str !== "string") {
-        throw TypeError("Must pass string to `capitalizeWords`")
+        throw new TypeError("Must pass string to `capitalizeWords`")
     }
 
     const words = str.split(" ")
@@ -37,10 +37,17 @@ export function capitalizeWords(str) {
     return capitalized.join(" ")
 }
 
-export function purgeDuplicates(arr) {
+function purgeDuplicates(arr) {
     if (!Array.isArray(arr)) {
         throw new TypeError("Must pass array to `purgeDuplicates`");
     }
 
     return Array.from(new Set(arr))
+}
+
+module.exports = {
+    sumOfArray,
+    isPalindrome,
+    capitalizeWords,
+    purgeDuplicates
 }
