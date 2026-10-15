@@ -20,7 +20,17 @@ function isPalindrome(str) {
     throw new TypeError("Must pass string to `isPalindrome`");
   }
 
-  return str.split("").reverse().join() === str;
+  const normalize = str
+    .replace(/[^\w\s]|_/g, "")
+    .trim()
+    .toLowerCase()
+    .split(" ")
+    .join("");
+  if (normalize === "") {
+    return false;
+  }
+
+  return normalize === normalize.split("").reverse().join("");
 }
 
 function capitalizeWords(str) {
