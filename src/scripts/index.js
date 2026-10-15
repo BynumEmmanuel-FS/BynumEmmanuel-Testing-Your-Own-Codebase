@@ -1,53 +1,55 @@
 function sumOfArray(arr) {
-    if (!Array.isArray(arr)) {
-        throw new TypeError("Must pass array to `sumOfArray`")
+  if (!Array.isArray(arr)) {
+    throw new TypeError("Must pass array to `sumOfArray`");
+  }
+
+  let i = 0;
+  for (let item of arr) {
+    if (typeof item !== "number" || isNaN(item) || !isFinite(item)) {
+      throw new TypeError("Array must only contain numbers");
     }
 
-    let i = 0;
-    for (let item of arr) {
-        if (typeof item !== 'number') {
-            throw new TypeError("Array must only contain numbers")
-        }
+    i += item;
+  }
 
-        i += item;
-    }
-
-    return i;
+  return i;
 }
 
 function isPalindrome(str) {
-    if (typeof str !== "string") {
-        throw new TypeError("Must pass string to `isPalindrome`")
-    }
+  if (typeof str !== "string") {
+    throw new TypeError("Must pass string to `isPalindrome`");
+  }
 
-    return str.split("").reverse().join() === str;
+  return str.split("").reverse().join() === str;
 }
 
 function capitalizeWords(str) {
-    if (typeof str !== "string") {
-        throw new TypeError("Must pass string to `capitalizeWords`")
-    }
+  if (typeof str !== "string") {
+    throw new TypeError("Must pass string to `capitalizeWords`");
+  }
 
-    const words = str.split(" ")
-    const capitalized = []
-    for (let word of words) {
-        capitalized.push(word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-    }
-    
-    return capitalized.join(" ")
+  const words = str.split(" ");
+  const capitalized = [];
+  for (let word of words) {
+    capitalized.push(
+      word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
+    );
+  }
+
+  return capitalized.join(" ");
 }
 
 function purgeDuplicates(arr) {
-    if (!Array.isArray(arr)) {
-        throw new TypeError("Must pass array to `purgeDuplicates`");
-    }
+  if (!Array.isArray(arr)) {
+    throw new TypeError("Must pass array to `purgeDuplicates`");
+  }
 
-    return Array.from(new Set(arr))
+  return Array.from(new Set(arr));
 }
 
 module.exports = {
-    sumOfArray,
-    isPalindrome,
-    capitalizeWords,
-    purgeDuplicates
-}
+  sumOfArray,
+  isPalindrome,
+  capitalizeWords,
+  purgeDuplicates,
+};
