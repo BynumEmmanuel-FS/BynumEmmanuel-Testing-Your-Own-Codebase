@@ -20,12 +20,8 @@ function isPalindrome(str) {
     throw new TypeError("Must pass string to `isPalindrome`");
   }
 
-  const normalize = str
-    .replace(/[^\w\s]|_/g, "")
-    .trim()
-    .toLowerCase()
-    .split(" ")
-    .join("");
+  const normalize = str.replace(/[\W_]/g, "").toLowerCase();
+
   if (normalize === "") {
     return false;
   }
@@ -41,7 +37,7 @@ function capitalizeWords(str) {
   const words = str.split(" ");
   const capitalized = [];
   let ignore = false;
-  
+
   for (let word of words) {
     if (word.includes("[") || word.includes("{")) {
       ignore = true;

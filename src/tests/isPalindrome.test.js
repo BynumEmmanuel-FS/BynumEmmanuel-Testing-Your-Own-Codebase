@@ -24,6 +24,12 @@ test("Edge Case", () => {
   expect(isPalindrome("Race Car")).toBeTruthy();
   expect(isPalindrome("Race, Car!")).toBeTruthy();
   expect(isPalindrome("Rat-Tar")).toBeTruthy();
+  expect(isPalindrome("race\tcar")).toBeTruthy();
+  expect(isPalindrome("race\ncar")).toBeTruthy();
+  expect(isPalindrome("race_car")).toBeTruthy();
+  expect(isPalindrome("\tradar\n")).toBeTruthy();
+  expect(isPalindrome("not\ta\tpalindrome")).toBeFalsy();
+  expect(isPalindrome("A\tman,\na plan_a canal: Panama!")).toBeTruthy();
 });
 
 test("Invalid Inputs", () => {
