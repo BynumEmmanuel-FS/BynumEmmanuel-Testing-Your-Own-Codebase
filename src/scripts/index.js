@@ -40,10 +40,24 @@ function capitalizeWords(str) {
 
   const words = str.split(" ");
   const capitalized = [];
+  let ignore = false;
+  
   for (let word of words) {
-    capitalized.push(
-      word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
-    );
+    if (word.includes("[") || word.includes("{")) {
+      ignore = true;
+    }
+
+    if (ignore) {
+      capitalized.push(word);
+    } else {
+      capitalized.push(
+        word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
+      );
+    }
+
+    if (word.includes("]") || word.includes("}")) {
+      ignore = false;
+    }
   }
 
   return capitalized.join(" ");
